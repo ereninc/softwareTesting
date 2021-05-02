@@ -10,7 +10,19 @@ public:
 	void JsonOku();
 	void PortfoyveEmirCek();
 	void Yazdir();
+
+	vector<string> emirSembolVektorGetir();
+	vector<string> emirIslemVektorGetir();
+	vector<int> emirAdetVektorGetir();
+	vector<string> portfoySembolVektorGetir();
+	vector<float> portfoyMaliyetVektorGetir();
+	vector<int> portfoyAdetVektorGetir();
+	vector<string> hisseSembolVektorGetir();
+	vector<float> hisseSembolFiyatGetir();
+	int BoyutGetir();
+
 private:
+	int boyut = 0;
 	vector<string> hisseSembolVector;
 	vector<float> hisseFiyatVector;
 

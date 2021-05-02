@@ -21,7 +21,8 @@ void Hisse::JsonOku()
 	json j;
 	jsonFile >> j;
 	json hisseler = j["Hisseler"];
-	for (int i = 0; i < hisseler.size(); i++)
+	boyut = hisseler.size();
+	for (int i = 0; i < boyut; i++)
 	{
 		this->id = hisseler.at(i).at("_id").get<string>(); //kullanmayacagim
 		this->sembol = hisseler.at(i).at("Sembol").get<string>();
@@ -75,4 +76,49 @@ void Hisse::Yazdir()
 		std::cout << "HISSE ADI : " << hisseSembolVector.at(i);
 		std::cout << " - GUNCEL FIYAT : " << hisseFiyatVector.at(i) << std::endl;
 	}
+}
+
+vector<string> Hisse::emirSembolVektorGetir()
+{
+	return vector<string>(this->emirSembolVector);
+}
+
+vector<string> Hisse::emirIslemVektorGetir()
+{
+	return vector<string>(this->emirIslemVector);
+}
+
+vector<int> Hisse::emirAdetVektorGetir()
+{
+	return vector<int>(this->emirAdetVector);
+}
+
+vector<string> Hisse::portfoySembolVektorGetir()
+{
+	return vector<string>(this->portfoySembolVector);
+}
+
+vector<float> Hisse::portfoyMaliyetVektorGetir()
+{
+	return vector<float>(this->portfoyMaliyetVector);
+}
+
+vector<int> Hisse::portfoyAdetVektorGetir()
+{
+	return vector<int>(this->portfoyAdetVector);
+}
+
+vector<string> Hisse::hisseSembolVektorGetir()
+{
+	return vector<string>(this->hisseSembolVector);
+}
+
+vector<float> Hisse::hisseSembolFiyatGetir()
+{
+	return vector<float>(this->hisseFiyatVector);
+}
+
+int Hisse::BoyutGetir()
+{
+	return boyut;
 }

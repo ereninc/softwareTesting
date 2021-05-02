@@ -36,6 +36,10 @@ void Portfoy::JsonOku()
 		portfoySembolVector.push_back(sembol);
 		portfoyMaliyetVector.push_back(maliyet);
 		portfoyAdetVector.push_back(adet);
+
+		int adt = adet;
+		float mlyt = maliyet;
+		portfoyToplamMaliyetVector.push_back(adt*mlyt);
 	}
 }
 
@@ -75,8 +79,9 @@ void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
 				std::cout << std::endl;
 				std::cout << "PORTFOY" << std::endl;
 				std::cout << "SEMBOL : " << vector2.at(i) << std::endl;
-				std::cout << "MALIYET : " << portfoyMaliyetVector.at(i) << std::endl;
-				std::cout << "ADET : " << portfoyAdetVector.at(i) << std::endl;
+				/*std::cout << "MALIYET : " << portfoyMaliyetVector.at(i) << std::endl;
+				std::cout << "ADET : " << portfoyAdetVector.at(i) << std::endl;*/
+				std::cout << "TOPLAM MALIYET : " << portfoyToplamMaliyetVector.at(i) << std::endl;
 				std::cout << "----------" << std::endl;
 			}
 		}
@@ -116,6 +121,11 @@ vector<float> Portfoy::portfoyMaliyetVektorGetir()
 vector<int> Portfoy::portfoyAdetVektorGetir()
 {
 	return vector<int>(this->portfoyAdetVector);
+}
+
+vector<float> Portfoy::portfoyToplamMaliyetGetir()
+{
+	return vector<float>(this->portfoyToplamMaliyetVector);
 }
 
 int Portfoy::BoyutGetir()
