@@ -9,6 +9,7 @@ using nlohmann::json;
 
 Emir::Emir()
 {
+	JsonOku();
 }
 
 void Emir::JsonOku()
@@ -17,6 +18,7 @@ void Emir::JsonOku()
 	json j;
 	jsonFile >> j;
 	json emirler = j["Emirler"];
+	boyut = emirler.size();
 	for (int i = 0; i < emirler.size(); i++)
 	{
 		this->id = emirler.at(i).at("_id").get<string>();
@@ -43,4 +45,9 @@ const void Emir::Yazdir(vector<string> const &vector)
 vector<string> Emir::VektorGetir()
 {
 	return vector<string>(this->emirVector);
+}
+
+int Emir::VektorBoyutuAl()
+{
+	return boyut;
 }

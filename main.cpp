@@ -15,8 +15,8 @@ int main()
 	std::cout << "\nHISSELER";
 	std::cout << "\n------------------";
 	std::cout << "\n------------------" << std::endl;
-	hisse->JsonOku();
-	hisse->Yazdir();
+	/*hisse->JsonOku();
+	hisse->Yazdir();*/
 
 	std::cout << "\n------------------";
 	std::cout << "\n------------------";
@@ -24,6 +24,7 @@ int main()
 	std::cout << "\n------------------";
 	std::cout << "\n------------------" << std::endl;
 	portfoy->JsonOku();
+	portfoy->Oku();
 	portfoy->Yazdir();
 
 	std::cout << "\n------------------";
@@ -31,8 +32,8 @@ int main()
 	std::cout << "\nACIK EMIRLER";
 	std::cout << "\n------------------";
 	std::cout << "\n------------------" << std::endl;
-	emir->JsonOku();
-	emir->Yazdir(emir->VektorGetir());
+	//emir->JsonOku();
+	//emir->Yazdir(emir->VektorGetir());
 	
 	return 0;
 }

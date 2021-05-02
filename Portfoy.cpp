@@ -9,7 +9,6 @@
 
 using namespace std;
 using nlohmann::json;
-vector<string> portfoyVector;
 
 Portfoy::Portfoy() 
 {
@@ -45,11 +44,36 @@ vector<string> Portfoy::EmirVektoruAl(Emir *emir)
 	return emir->VektorGetir();
 }
 
+void Portfoy::Oku()
+{
+	Emir* emir = new Emir();
+	int boyut = emir->VektorBoyutuAl();
+	for (int i = 0; i < boyut*4; i++)
+	{
+		tempVec.push_back(emir->VektorGetir().at(i));
+		std::cout << tempVec.at(i) << std::endl;
+	}
+}
+
+void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
+{
+	for (auto &i : vector1)
+	{
+		for (auto &j : vector2)
+		{
+			if (i == j)
+			{
+				std::cout << i << std::endl;
+			}
+		}
+	}
+}
 
 void Portfoy::Yazdir()
 {
-	for (auto &i : portfoyVector)
+	Karsilastir(tempVec, portfoyVector);
+	/*for (auto &i : portfoyVector)
 	{
 		std::cout << i << std::endl;
-	}
+	}*/
 }
