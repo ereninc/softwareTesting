@@ -9,12 +9,13 @@ class Portfoy
 public:
 	Portfoy();
 	void JsonOku();
-	vector<string> EmirVektoruAl(Emir* emir);
 	vector<string> portfoyVector;
-	void Oku();
+	void EmirCek();
 	void Karsilastir(vector<string> vector1, vector<string> vector2);
 	void Yazdir();
-	vector<string> tempVec;
+	vector<string> emirSembolVector;
+	vector<string> emirIslemVector;
+	vector<int> emirAdetVector;
 private:
 	string id;
 	string sembol;

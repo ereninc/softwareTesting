@@ -25,26 +25,25 @@ void Emir::JsonOku()
 		this->sembol = emirler.at(i).at("Sembol").get<string>();
 		this->islem = emirler.at(i).at("Islem").get<string>();
 		this->adet = emirler.at(i).at("Adet").get<int>();
-		emirVector.push_back(id);
-		emirVector.push_back(sembol);
-		emirVector.push_back(islem);
-		stringstream ss;
-		ss << adet;
-		emirVector.push_back(ss.str());
+		sembolVector.push_back(sembol);
+		islemVector.push_back(islem);
+		adetVector.push_back(adet);
 	}
 }
 
-const void Emir::Yazdir(vector<string> const &vector)
+vector<string> Emir::sembolVektorGetir()
 {
-	for (auto &i : vector)
-	{
-		std::cout << i << std::endl;
-	}
+	return vector<string>(this->sembolVector);
 }
 
-vector<string> Emir::VektorGetir()
+vector<string> Emir::islemVektorGetir()
 {
-	return vector<string>(this->emirVector);
+	return vector<string>(this->islemVector);
+}
+
+vector<int> Emir::adetVektorGetir()
+{
+	return vector<int>(this->adetVector);
 }
 
 int Emir::VektorBoyutuAl()

@@ -39,20 +39,25 @@ void Portfoy::JsonOku()
 	}
 }
 
-vector<string> Portfoy::EmirVektoruAl(Emir *emir)
-{
-	return emir->VektorGetir();
-}
-
-void Portfoy::Oku()
+void Portfoy::EmirCek()
 {
 	Emir* emir = new Emir();
 	int boyut = emir->VektorBoyutuAl();
-	for (int i = 0; i < boyut*4; i++)
+	for (int i = 0; i < boyut; i++)
 	{
-		tempVec.push_back(emir->VektorGetir().at(i));
-		std::cout << tempVec.at(i) << std::endl;
+		emirSembolVector.push_back(emir->sembolVektorGetir().at(i));
 	}
+
+	for (int i = 0; i < boyut; i++)
+	{
+		emirIslemVector.push_back(emir->islemVektorGetir().at(i));
+	}
+
+	for (int i = 0; i < boyut; i++)
+	{
+		emirAdetVector.push_back(emir->adetVektorGetir().at(i));
+	}
+
 }
 
 void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
@@ -71,9 +76,5 @@ void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
 
 void Portfoy::Yazdir()
 {
-	Karsilastir(tempVec, portfoyVector);
-	/*for (auto &i : portfoyVector)
-	{
-		std::cout << i << std::endl;
-	}*/
+	Karsilastir(emirSembolVector, portfoyVector);
 }

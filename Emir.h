@@ -3,17 +3,21 @@
 #include <vector>
 
 using namespace std;
+
 class Emir 
 {
 public:
 	Emir();
 	void JsonOku();
-	const void Yazdir(vector<string> const &vector);
-	vector<string> VektorGetir();
+	vector<string> sembolVektorGetir();
+	vector<string> islemVektorGetir();
+	vector<int> adetVektorGetir();
 	int VektorBoyutuAl();
 private:
 	int boyut = 0;
-	std::vector<std::string> emirVector;
+	std::vector<std::string> sembolVector;
+	std::vector<std::string> islemVector;
+	std::vector<int> adetVector;
 	std::string id;
 	std::string sembol;
 	std::string islem;
