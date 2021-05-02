@@ -14,6 +14,9 @@ Portfoy::Portfoy()
 {
 	this->adet = 0;
 	this->maliyet = 0.0f;
+	JsonOku();
+	EmirCek();
+	Yazdir();
 }
 
 void Portfoy::JsonOku()
@@ -22,20 +25,17 @@ void Portfoy::JsonOku()
 	json j;
 	jsonFile >> j;
 	json portfoy = j["Portfoy"];
+	boyut = portfoy.size();
 	for (int i = 0; i < portfoy.size(); i++)
 	{
-		this->id = portfoy.at(i).at("_id").get<string>();
+		this->id = portfoy.at(i).at("_id").get<string>(); //kullanmayacagim
 		this->sembol = portfoy.at(i).at("Sembol").get<string>();
 		this->maliyet = portfoy.at(i).at("Maliyet").get<float>();
 		this->adet = portfoy.at(i).at("Adet").get<int>();
-		portfoyVector.push_back(id);
-		portfoyVector.push_back(sembol);
-		stringstream ss;
-		ss << maliyet;
-		portfoyVector.push_back(ss.str());
-		stringstream sa;
-		sa << adet;
-		portfoyVector.push_back(sa.str());
+
+		portfoySembolVector.push_back(sembol);
+		portfoyMaliyetVector.push_back(maliyet);
+		portfoyAdetVector.push_back(adet);
 	}
 }
 
@@ -57,18 +57,27 @@ void Portfoy::EmirCek()
 	{
 		emirAdetVector.push_back(emir->adetVektorGetir().at(i));
 	}
-
 }
 
 void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
 {
-	for (auto &i : vector1)
+	for (size_t i = 0; i < vector1.size(); i++)
 	{
-		for (auto &j : vector2)
+		for (size_t j = 0; j < vector2.size(); j++)
 		{
-			if (i == j)
+			if (vector1.at(i) == vector2.at(j))
 			{
-				std::cout << i << std::endl;
+				std::cout << "EMIRLER" << std::endl;
+				std::cout << "SEMBOL : " << vector1.at(i) << std::endl;
+				std::cout << "ISLEM : " << emirIslemVector.at(i) << std::endl;
+				std::cout << "ADET : " << emirAdetVector.at(i) << std::endl;
+
+				std::cout << std::endl;
+				std::cout << "PORTFOY" << std::endl;
+				std::cout << "SEMBOL : " << vector2.at(i) << std::endl;
+				std::cout << "MALIYET : " << portfoyMaliyetVector.at(i) << std::endl;
+				std::cout << "ADET : " << portfoyAdetVector.at(i) << std::endl;
+				std::cout << "----------" << std::endl;
 			}
 		}
 	}
@@ -76,5 +85,40 @@ void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
 
 void Portfoy::Yazdir()
 {
-	Karsilastir(emirSembolVector, portfoyVector);
+	Karsilastir(emirSembolVector, portfoySembolVector);
+}
+
+vector<string> Portfoy::emirSembolVektorGetir()
+{
+	return vector<string>(this->emirSembolVector);
+}
+
+vector<string> Portfoy::emirIslemVektorGetir()
+{
+	return vector<string>(this->emirIslemVector);
+}
+
+vector<int> Portfoy::emirAdetVektorGetir()
+{
+	return vector<int>(this->emirAdetVector);
+}
+
+vector<string> Portfoy::portfoySembolVektorGetir()
+{
+	return vector<string>(this->portfoySembolVector);
+}
+
+vector<float> Portfoy::portfoyMaliyetVektorGetir()
+{
+	return vector<float>(this->portfoyMaliyetVector);
+}
+
+vector<int> Portfoy::portfoyAdetVektorGetir()
+{
+	return vector<int>(this->portfoyAdetVector);
+}
+
+int Portfoy::BoyutGetir()
+{
+	return boyut;
 }

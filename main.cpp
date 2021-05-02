@@ -6,11 +6,9 @@
 
 int main() 
 {
-	Portfoy *portfoy = new Portfoy();
-
-	portfoy->JsonOku();
-	portfoy->EmirCek();
-	portfoy->Yazdir();
-	
+	Portfoy* portfoy = new Portfoy();
+	std::cout << "\n\n" << std::endl;
+	std::cout << "HISSE LISTESI\n\n" << std::endl;
+	Hisse* hisse = new Hisse();
 	return 0;
 }

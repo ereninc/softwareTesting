@@ -21,10 +21,11 @@ void Emir::JsonOku()
 	boyut = emirler.size();
 	for (int i = 0; i < emirler.size(); i++)
 	{
-		this->id = emirler.at(i).at("_id").get<string>();
+		this->id = emirler.at(i).at("_id").get<string>(); //kullanmayacagim
 		this->sembol = emirler.at(i).at("Sembol").get<string>();
 		this->islem = emirler.at(i).at("Islem").get<string>();
 		this->adet = emirler.at(i).at("Adet").get<int>();
+
 		sembolVector.push_back(sembol);
 		islemVector.push_back(islem);
 		adetVector.push_back(adet);
