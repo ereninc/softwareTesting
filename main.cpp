@@ -8,6 +8,6 @@
 int main() 
 {
 	Banka* banka = new Banka();
-	//Hisse* hisse = new Hisse();
+	banka->Hesapla();
 	return 0;
 }

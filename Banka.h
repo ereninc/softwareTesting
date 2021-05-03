@@ -17,6 +17,7 @@ public:
 	vector<float> portfoyToplamMaliyetVektorGetir();
 	vector<int> portfoyAdetVektorGetir();
 	void Yazdir();
+	void Hesapla();
 private:
 	int hisseBoyut;
 

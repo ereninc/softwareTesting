@@ -10,7 +10,7 @@
 Banka::Banka()
 {
 	DataCek();
-	Yazdir();
+	//Yazdir();
 	PortfoyveEmirCek();
 }
 
@@ -37,11 +37,55 @@ void Banka::Yazdir()
 	}
 }
 
+void Banka::Hesapla()
+{
+	Portfoy* portfoy = new Portfoy();
+	int boyut = portfoy->BoyutGetir();
+	std::cout << "Satislar Kar/Zarar" << std::endl;
+	for (size_t i = 0; i < boyut-1; i++)
+	{
+		for (size_t j = 0; j < hisseBoyut - 1; j++)
+		{
+			if (sembolBankaVektor.at(i) == hisseSembolBankaVector.at(j))
+			{
+				if (emirIslemVector.at(i) == "SATIS")
+				{
+					std::cout << sembolBankaVektor.at(i) << " : ";
+					degisimVektor.push_back(guncelFiyatCarpiEmirAdetiVektor.at(i) - toplamMaliyetVektor.at(i));
+					if (degisimVektor.at(i) > 0)
+					{
+						std::cout << degisimVektor.at(i) << " tl kar." << std::endl;
+					}
+					else
+					{
+						std::cout << (-1) * degisimVektor.at(i) << " tl zarar." << std::endl;
+					}
+				}
+				else if (emirIslemVector.at(i) == "ALIS")
+				{
+					std::cout << sembolBankaVektor.at(i) << ": ";
+					degisimVektor.push_back((toplamMaliyetVektor.at(i) + guncelFiyatCarpiEmirAdetiVektor.at(i)) / (emirAdetVector.at(i) + portfoyAdetVector.at(i)));
+					std::cout << "Adet : " << (emirAdetVector.at(i) + portfoyAdetVector.at(i)) << std::endl;
+					std::cout << "Yeni Maliyet : " << degisimVektor.at(i) << std::endl;
+
+				}
+			}
+			/*else
+			{
+				std::cout << "Hisse : " << sembolBankaVektor.at(i) << std::endl;
+				std::cout << "Adet : " << portfoyAdetVector.at(i) << std::endl;
+				std::cout << "Maliyet : " << portfoyToplamMaliyetVector.at(i) << std::endl;
+			}*/
+		}
+	}
+	std::cout << "Toplam kar/zarar : " << std::endl;
+}
+
 void Banka::PortfoyveEmirCek()
 {
 	Portfoy* portfoy = new Portfoy();
 	int boyut = portfoy->BoyutGetir();
-	std::cout << "\nBANKA BILGILERI\n" << std::endl;
+	//std::cout << "\nBANKA BILGILERI\n" << std::endl;
 	for (int i = 0; i < boyut-1; i++)
 	{
 		emirSembolVector.push_back(portfoy->emirSembolVektorGetir().at(i));
@@ -52,8 +96,21 @@ void Banka::PortfoyveEmirCek()
 		portfoyAdetVector.push_back(portfoy->portfoyAdetVektorGetir().at(i));
 		portfoyToplamMaliyetVector.push_back(portfoy->portfoyToplamMaliyetGetir().at(i)); 
 
-		std::cout << "EMIR SEMBOL : " << emirSembolVector.at(i) << " - ISLEM : " << emirIslemVector.at(i) << " - ADET : " << emirAdetVector.at(i) << std::endl;
-		std::cout << "PORTFOY SEMBOL : " << portfoySembolVector.at(i) << " - MALIYET : " << portfoyMaliyetVector.at(i) << " - ADET : " << portfoyAdetVector.at(i) << " - TOPLAM MALIYET : " << portfoyToplamMaliyetVector.at(i) << std::endl;
+		//std::cout << "EMIR SEMBOL : " << emirSembolVector.at(i) << " - ISLEM : " << emirIslemVector.at(i) << " - ADET : " << emirAdetVector.at(i) << std::endl;
+		//std::cout << "PORTFOY SEMBOL : " << portfoySembolVector.at(i) << " - MALIYET : " << portfoyMaliyetVector.at(i) << " - ADET : " << portfoyAdetVector.at(i) << " - TOPLAM MALIYET : " << portfoyToplamMaliyetVector.at(i) << std::endl;
+
+		sembolBankaVektor.push_back(portfoy->emirSembolVektorGetir().at(i));
+		toplamMaliyetVektor.push_back(portfoy->portfoyToplamMaliyetGetir().at(i));
+		//std::cout << "Banka Sembol : " << sembolBankaVektor.at(i) << " - Toplam Maliyet : " << toplamMaliyetVektor.at(i) << std::endl;
+		for (size_t j = 0; j < hisseBoyut-1; j++)
+		{
+			if (sembolBankaVektor.at(i) == hisseSembolBankaVector.at(j))
+			{
+				guncelFiyatCarpiEmirAdetiVektor.push_back(emirAdetVector.at(i) * hisseGuncelFiyatBankaVector.at(j));
+				//std::cout << "Guncel Fiyat ("<<hisseGuncelFiyatBankaVector.at(j)<<") * Emir Adet ("<< emirAdetVector.at(i)<<") : " << guncelFiyatCarpiEmirAdetiVektor.at(i) << std::endl;
+				//std::cout << "------------------------------" << std::endl;
+			}
+		}
 	}
 }
 
