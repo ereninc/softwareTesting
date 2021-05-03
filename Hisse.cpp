@@ -1,3 +1,12 @@
+﻿/**
+*
+* @author Erencan İNANCI - erencan.inanci@ogr.sakarya.edu.tr
+* @since ‎2 ‎Mayıs ‎2021 ‎Pazar, ‏‎20:54:57
+* <p>
+* Hisse sınıfı. Bu sınıf sadece hisseler.json'dan dönen verileri kullanacağım 2 farklı vektörde depoluyor
+* </p>
+*/
+
 #include "Hisse.h"
 #include "Emir.h"
 #include "Portfoy.h"

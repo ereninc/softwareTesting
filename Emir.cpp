@@ -1,3 +1,12 @@
+﻿/**
+*
+* @author Erencan İNANCI - erencan.inanci@ogr.sakarya.edu.tr
+* @since ‎2 ‎Mayıs ‎2021 ‎Pazar, ‏‎20:54:57
+* <p>
+* Emir sınıfı. JSon'dan okunan datalar burada vektörlere yerleştirildi.
+* </p>
+*/
+
 #include "Emir.h"
 #include <iostream>
 #include <fstream>

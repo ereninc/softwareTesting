@@ -1,3 +1,13 @@
+﻿/**
+*
+* @author Erencan İNANCI - erencan.inanci@ogr.sakarya.edu.tr
+* @since ‎2 ‎Mayıs ‎2021 ‎Pazar, ‏‎20:54:57
+* <p>
+* Portfoy sınıfı. Portfoy json dosyasından dönen verileri burada vektörlere yerleştirip emir 
+* sınıfından dönen vektörleri burada başka vektörlere yerleştirdim.
+* </p>
+*/
+
 #include "Portfoy.h"
 #include "Emir.h"
 #include <iostream>
@@ -89,7 +99,11 @@ void Portfoy::Karsilastir(vector<string> vector1, vector<string> vector2)
 
 void Portfoy::Yazdir()
 {
-	Karsilastir(emirSembolVector, portfoySembolVector);
+	//Karsilastir(emirSembolVector, portfoySembolVector);
+	for (auto &i : portfoySembolVector)
+	{
+		std::cout << i << std::endl;
+	}
 }
 
 vector<string> Portfoy::emirSembolVektorGetir()

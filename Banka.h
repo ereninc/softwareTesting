@@ -1,3 +1,13 @@
+﻿/**
+*
+* @author Erencan İNANCI - erencan.inanci@ogr.sakarya.edu.tr
+* @since ‎2 ‎Mayıs ‎2021 ‎Pazar, ‏‎20:54:57
+* <p>
+* Banka sınıfının başlık dosyası. Fonksiyon başlıkları ve kullanılan private fieldlar
+* burada tanımlandı.
+* </p>
+*/
+
 #pragma once
 #include <string>
 #include <vector>
@@ -18,8 +28,10 @@ public:
 	vector<int> portfoyAdetVektorGetir();
 	void Yazdir();
 	void Hesapla();
+	void KarZararHesapla();
 private:
 	int hisseBoyut;
+	float toplamKar = 0;
 
 	//banka bilgileri icin
 	vector<string> sembolBankaVektor;

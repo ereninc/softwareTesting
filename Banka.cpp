@@ -1,3 +1,14 @@
+﻿/**
+*
+* @author Erencan İNANCI - erencan.inanci@ogr.sakarya.edu.tr
+* @since ‎2 ‎Mayıs ‎2021 ‎Pazar, ‏‎20:54:57
+* <p>
+* Banka sınıfı, bütün işlemleri yapan sınıf. Diğer sınıflardan dönen vektörleri burada kullanarak
+* kar-zarar hesabı, portföy kontrolü yapılıyor.
+* </p>
+*/
+
+
 #include "Banka.h"
 #include "Hisse.h"
 #include "Emir.h"
@@ -10,7 +21,6 @@
 Banka::Banka()
 {
 	DataCek();
-	//Yazdir();
 	PortfoyveEmirCek();
 }
 
@@ -40,13 +50,15 @@ void Banka::Yazdir()
 void Banka::Hesapla()
 {
 	Portfoy* portfoy = new Portfoy();
+	Emir* emir = new Emir();
 	int boyut = portfoy->BoyutGetir();
+	int emirBoyut = emir->VektorBoyutuAl();
 	std::cout << "Satislar Kar/Zarar" << std::endl;
 	for (size_t i = 0; i < boyut-1; i++)
 	{
 		for (size_t j = 0; j < hisseBoyut - 1; j++)
 		{
-			if (portfoySembolVector.at(i) == hisseSembolBankaVector.at(j))
+			if (emirSembolVector.at(i) == hisseSembolBankaVector.at(j))
 			{
 				if (emirIslemVector.at(i) == "SATIS")
 				{
@@ -61,37 +73,66 @@ void Banka::Hesapla()
 						std::cout << (-1) * degisimVektor.at(i) << " tl zarar." << std::endl;
 					}
 				}
-
-				else if (emirIslemVector.at(i) == "ALIS")
-				{
-					std::cout << sembolBankaVektor.at(i) << ": ";
-					degisimVektor.push_back((toplamMaliyetVektor.at(i) + guncelFiyatCarpiEmirAdetiVektor.at(i)) / (emirAdetVector.at(i) + portfoyAdetVector.at(i)));
-					std::cout << "Adet : " << (emirAdetVector.at(i) + portfoyAdetVector.at(i)) << std::endl;
-					std::cout << "Yeni Maliyet : " << degisimVektor.at(i) << std::endl;
-				}
-				if (portfoySembolVector.at(i) != emirSembolVector.at(i))
-				{
-					std::cout << "Hisse: " << emirSembolVector.at(i) << std::endl;
-				}
 			}
-			
+		}
+		if (i == (boyut-2))
+		{
+			KarZararHesapla();
 		}
 	}
-	float toplam = 0;
-	for (size_t j = 0; j < degisimVektor.size() - 1; j++)
+
+	std::cout << "\nGuncel Portfoy:" << std::endl;
+	for (size_t i = 0; i < boyut-1; i++)
 	{
-		toplam += degisimVektor.at(j);
+		for (size_t j = 0; j < hisseBoyut-1; j++)
+		{
+			if (emirSembolVector.at(i) == hisseSembolBankaVector.at(j))
+			{
+				if (emirIslemVector.at(i) == "ALIS")
+				{
+					std::cout << "Hisse : " << sembolBankaVektor.at(i) << std::endl;
+					degisimVektor.push_back((toplamMaliyetVektor.at(i) + guncelFiyatCarpiEmirAdetiVektor.at(i)) / (emirAdetVector.at(i) + portfoyAdetVector.at(i)));
+					std::cout << "Adet : " << (emirAdetVector.at(i) + portfoyAdetVector.at(i)) << std::endl;
+					std::cout << "Yeni Maliyet : " << degisimVektor.at(i) << " tl. " << std::endl;
+					std::cout <<  "------------------------ " << std::endl;
+				}
+			}
+		}
 	}
-	if (toplam > 0)
+
+	for (size_t i = 0; i < boyut; i++)
 	{
-		std::cout << "Toplam kar/zarar : +" << toplam << " TL" << std::endl;
+		for (size_t j = 0; j < emirBoyut-1; j++)
+		{
+			if (portfoy->portfoySembolVektorGetir().at(i) == emirSembolVector.at(j))
+			{
+				i++;
+			}
+			else
+			{
+				std::cout <<"Hisse : " << portfoy->portfoySembolVektorGetir().at(i) << std::endl;
+				std::cout << "Adet : " << portfoy->portfoyAdetVektorGetir().at(i) << std::endl;
+				std::cout << "Maliyet :" << portfoy->portfoyMaliyetVektorGetir().at(i) << " tl." << std::endl;
+				break;
+			}
+		}
 	}
-	else if (toplam < 0)
+}
+
+void Banka::KarZararHesapla()
+{
+	for (size_t j = 0; j < degisimVektor.size(); j++)
 	{
-		std::cout << "Toplam kar/zarar : -" << toplam << " TL" << std::endl;
+		toplamKar += degisimVektor.at(j);
 	}
-	
-	
+	if (toplamKar > 0)
+	{
+		std::cout << "Toplam kar/zarar : +" << toplamKar << " TL" << std::endl;
+	}
+	else if (toplamKar < 0)
+	{
+		std::cout << "Toplam kar/zarar : -" << toplamKar << " TL" << std::endl;
+	}
 }
 
 void Banka::PortfoyveEmirCek()
