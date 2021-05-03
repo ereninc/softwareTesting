@@ -57,7 +57,6 @@ void Banka::PortfoyveEmirCek()
 	}
 }
 
-
 vector<string> Banka::emirSembolVektorGetir()
 {
 	return vector<string>(this->emirSembolVector);

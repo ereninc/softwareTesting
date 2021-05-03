@@ -12,7 +12,6 @@ using nlohmann::json;
 Hisse::Hisse()
 {
 	JsonOku();
-	//Yazdir();
 }
 
 void Hisse::JsonOku()
@@ -31,17 +30,6 @@ void Hisse::JsonOku()
 
 		hisseSembolVector.push_back(sembol);
 		hisseFiyatVector.push_back(fiyat);
-	}
-}
-
-
-
-void Hisse::Yazdir()
-{
-	for (size_t i = 0; i < hisseSembolVector.size(); i++)
-	{
-		std::cout << "HISSE ADI : " << hisseSembolVector.at(i);
-		std::cout << " - GUNCEL FIYAT : " << hisseFiyatVector.at(i) << std::endl;
 	}
 }
 
