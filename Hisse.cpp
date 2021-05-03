@@ -12,7 +12,7 @@ using nlohmann::json;
 Hisse::Hisse()
 {
 	JsonOku();
-	Yazdir();
+	//Yazdir();
 }
 
 void Hisse::JsonOku()
@@ -34,40 +34,7 @@ void Hisse::JsonOku()
 	}
 }
 
-void Hisse::PortfoyveEmirCek()
-{
-	Portfoy* portfoy = new Portfoy();
-	int boyut = portfoy->BoyutGetir();
-	for (int i = 0; i < boyut; i++)
-	{
-		emirSembolVector.push_back(portfoy->emirSembolVektorGetir().at(i));
-	}
 
-	for (int i = 0; i < boyut; i++)
-	{
-		emirIslemVector.push_back(portfoy->emirIslemVektorGetir().at(i));
-	}
-
-	for (int i = 0; i < boyut; i++)
-	{
-		emirAdetVector.push_back(portfoy->emirAdetVektorGetir().at(i));
-	}
-
-	for (int i = 0; i < boyut; i++)
-	{
-		portfoySembolVector.push_back(portfoy->portfoySembolVektorGetir().at(i));
-	}
-
-	for (int i = 0; i < boyut; i++)
-	{
-		portfoyMaliyetVector.push_back(portfoy->portfoyMaliyetVektorGetir().at(i));
-	}
-
-	for (int i = 0; i < boyut; i++)
-	{
-		portfoyAdetVector.push_back(portfoy->portfoyAdetVektorGetir().at(i));
-	}
-}
 
 void Hisse::Yazdir()
 {
@@ -76,36 +43,6 @@ void Hisse::Yazdir()
 		std::cout << "HISSE ADI : " << hisseSembolVector.at(i);
 		std::cout << " - GUNCEL FIYAT : " << hisseFiyatVector.at(i) << std::endl;
 	}
-}
-
-vector<string> Hisse::emirSembolVektorGetir()
-{
-	return vector<string>(this->emirSembolVector);
-}
-
-vector<string> Hisse::emirIslemVektorGetir()
-{
-	return vector<string>(this->emirIslemVector);
-}
-
-vector<int> Hisse::emirAdetVektorGetir()
-{
-	return vector<int>(this->emirAdetVector);
-}
-
-vector<string> Hisse::portfoySembolVektorGetir()
-{
-	return vector<string>(this->portfoySembolVector);
-}
-
-vector<float> Hisse::portfoyMaliyetVektorGetir()
-{
-	return vector<float>(this->portfoyMaliyetVector);
-}
-
-vector<int> Hisse::portfoyAdetVektorGetir()
-{
-	return vector<int>(this->portfoyAdetVector);
 }
 
 vector<string> Hisse::hisseSembolVektorGetir()

@@ -16,7 +16,7 @@ Portfoy::Portfoy()
 	this->maliyet = 0.0f;
 	JsonOku();
 	EmirCek();
-	Yazdir();
+	//Yazdir();
 }
 
 void Portfoy::JsonOku()
