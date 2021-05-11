@@ -44,7 +44,9 @@
     <ClInclude Include="pch.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\Banka.cpp" />
     <ClCompile Include="..\Emir.cpp" />
+    <ClCompile Include="..\Hisse.cpp" />
     <ClCompile Include="..\Portfoy.cpp" />
     <ClCompile Include="test.cpp" />
     <ClCompile Include="pch.cpp">

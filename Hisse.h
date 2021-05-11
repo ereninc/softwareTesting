@@ -20,10 +20,10 @@ public:
 	vector<string> hisseSembolVektorGetir();
 	vector<float> hisseSembolFiyatGetir();
 	int BoyutGetir();
-private:
-	int boyut = 0;
 	vector<string> hisseSembolVector;
 	vector<float> hisseFiyatVector;
+private:
+	int boyut = 0;
 	std::string id;
 	std::string sembol;
 	std::string ad;
