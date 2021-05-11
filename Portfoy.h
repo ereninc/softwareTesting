@@ -30,12 +30,12 @@ public:
 	vector<int> portfoyAdetVektorGetir();
 	vector<float> portfoyToplamMaliyetGetir();
 	int BoyutGetir();
-private:
-	int boyut = 0;
 	vector<string> portfoySembolVector;
 	vector<float> portfoyMaliyetVector;
 	vector<int> portfoyAdetVector;
 	vector<float> portfoyToplamMaliyetVector;
+private:
+	int boyut = 0;
 	vector<string> emirSembolVector;
 	vector<string> emirIslemVector;
 	vector<int> emirAdetVector;
