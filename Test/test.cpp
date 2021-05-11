@@ -511,4 +511,58 @@ TEST(BankaTest, BankayaPortfoydenGelenToplamMaliyetVerileriUlastiMiTest) {
 	delete banka;
 }
 
+TEST(BankaTest, BankayaPortfoydenGelenAdetVerileriUlastiMiTest) {
+	Banka* banka = new Banka();
+	auto geciciVektor = banka->portfoyAdetVektorGetir();
+	bool digerClasstanDegerGeldi = false;
+	if (!geciciVektor.empty())
+	{
+		digerClasstanDegerGeldi = true;
+	}
+	ASSERT_TRUE(digerClasstanDegerGeldi);
+	delete banka;
+}
+
+TEST(BankaTest, BankayaEmirdenGelenSembolVerileriUlastiMiTest) {
+	Banka* banka = new Banka();
+	auto geciciVektor = banka->emirSembolVektorGetir();
+	bool digerClasstanDegerGeldi = false;
+	if (!geciciVektor.empty())
+	{
+		digerClasstanDegerGeldi = true;
+	}
+	ASSERT_TRUE(digerClasstanDegerGeldi);
+	delete banka;
+}
+
+TEST(BankaTest, BankayaEmirdenGelenIslemVerileriUlastiMiTest) {
+	Banka* banka = new Banka();
+	auto geciciVektor = banka->emirIslemVektorGetir();
+	bool digerClasstanDegerGeldi = false;
+	if (!geciciVektor.empty())
+	{
+		digerClasstanDegerGeldi = true;
+	}
+	ASSERT_TRUE(digerClasstanDegerGeldi);
+	delete banka;
+}
+
+TEST(BankaTest, BankayaEmirdenGelenAdetVerileriUlastiMiTest) {
+	Banka* banka = new Banka();
+	auto geciciVektor = banka->emirAdetVektorGetir();
+	bool digerClasstanDegerGeldi = false;
+	if (!geciciVektor.empty())
+	{
+		digerClasstanDegerGeldi = true;
+	}
+	ASSERT_TRUE(digerClasstanDegerGeldi);
+	delete banka;
+}
+
+TEST(BankaTest, BankaToplamKarTest) {
+	Banka* banka = new Banka();
+	ASSERT_EQ(117.2f, banka->toplamKar);
+	delete banka;
+}
+
 #pragma endregion

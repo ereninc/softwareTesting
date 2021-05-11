@@ -29,9 +29,9 @@ public:
 	void Yazdir();
 	void Hesapla();
 	void KarZararHesapla();
+	float toplamKar = 0;
 private:
 	int hisseBoyut;
-	float toplamKar = 0;
 
 	//banka bilgileri icin
 	vector<string> sembolBankaVektor;
