@@ -5,6 +5,7 @@
 #include "../Banka.h"
 #include <typeinfo>
 
+#pragma region BIRIM TESTLERI
 
 #pragma region EmirTestleri
 
@@ -564,5 +565,13 @@ TEST(BankaTest, BankaToplamKarTest) {
 	ASSERT_EQ(117.2f, banka->toplamKar);
 	delete banka;
 }
+
+#pragma endregion
+
+#pragma endregion
+
+#pragma region ENTEGRASYON TESTLERI
+
+
 
 #pragma endregion
